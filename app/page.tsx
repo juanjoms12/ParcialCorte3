@@ -25,6 +25,7 @@ export default function PlanetViewer({ planet }: { planet: Planet }) {
 export default function SolarSystemScene({ planets }: { visiblePlanet: VisibilityBufferDrawingPipeline }) {
   return (
     <div className="h-80 w-full overflow-hidden rounded-box">
+      
     </div>
   );
 }
