@@ -1,30 +1,30 @@
+/* eslint-disable react/jsx-no-undef */
 'use client';
 import { useState } from 'react';
 import { planets } from '@/features/planets/data/planets'; 
 import { select } from 'three/tsl';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Stars } from '@react-three/drei';
+import { VisibilityBufferDrawingPipeline } from 'three/examples/jsm/pipelines/VisibilityBufferDrawingPipeline.js';
 
-export default function HomePage() {
+export default function PlanetViewer({ planet }: { planet: Planet }) {
+  return (
+    <div className="h-80 w-full overflow-hidden rounded-box">
+      <Canvas camera={{ position: [0, 1, planet.size * 4 + 2], fov: 50 }}>
+        <color attach="background" args={["#05060f"]} />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[5, 3, 5]} intensity={2.5} />
+        <Stars radius={50} depth={30} count={1500} factor={3} fade />
+        <Spinner planet={planet} />
+        <OrbitControls enablePan={false} enableZoom={false} />
+      </Canvas>
+    </div>
+  );
+}
 
-  const [planets, setPlanet] = useState("");
-  
-
-    function SolarSystemScene() {
-        if (!planets.trim() || !select) return;
-
-    }
-
-  return <h1>Home</h1>;
-  <SolarSystemScene></SolarSystemScene>
-
-          <main className="min-h-screen bg-slate-100 p-4 text-slate-800">
-            <div className="mx-auto flex h-[90vh] max-w-6xl overflow-hidden rounded-2xl bg-white shadow-xl">
-                <aside className="w-1/3 border-r border-slate-200">
-                    <div className="flex items-center justify-between bg-emerald-600 p-5 text-white">
-
-                              <main className="min-h-screen bg-slate-100 p-4 text-slate-800">
-            <div className="mx-auto flex h-[90vh] max-w-6xl overflow-hidden rounded-2xl bg-white shadow-xl">
-                <aside className="w-1/3 border-r border-slate-200">
-                    <div className="flex items-center justify-between bg-emerald-600 p-5 text-white">
-
-
-} 
+export default function SolarSystemScene({ planets }: { visiblePlanet: VisibilityBufferDrawingPipeline }) {
+  return (
+    <div className="h-80 w-full overflow-hidden rounded-box">
+    </div>
+  );
+}
